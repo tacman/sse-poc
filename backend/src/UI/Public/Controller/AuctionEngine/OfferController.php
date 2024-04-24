@@ -46,6 +46,34 @@ class OfferController extends AbstractController
 
         return new Response('published!');
     }
+
+    #[Route("/", name: "app_homepage")]
+    public function homepage(Request $request, HubInterface $hub): Response
+    {
+        $auctionId = $request->get('id', 1);
+        $body = ['bid' => 100];
+
+//        $body = json_decode($request->getContent(), true, 512, JSON_THROW_ON_ERROR);
+
+        Assert::keyExists($body, 'bid');
+        $winnerBid = $body['bid'];
+
+            $update = new Update(
+                'auctions-' . $auctionId,
+                json_encode([
+                    'winnerBid' => $winnerBid
+                ], JSON_THROW_ON_ERROR)
+            );
+
+            $hub->publish($update);
+        try {
+        } catch (\Exception $e) {
+            die($e->getMessage());
+        }
+
+        return new Response('published!');
+    }
+
 }
 
 

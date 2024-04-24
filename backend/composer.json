@@ -6,7 +6,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^8.0",
+        "php": "^8.2",
         "ext-ctype": "*",
         "ext-dom": "*",
         "ext-ftp": "*",
@@ -40,7 +40,8 @@
         "dama/doctrine-test-bundle": "^6.5",
         "phpspec/prophecy-phpunit": "^2.0",
         "phpunit/phpunit": "^9.5",
-        "psalm/plugin-symfony": "^5.0"
+        "psalm/plugin-symfony": "^5.0",
+        "symfony/maker-bundle": "^1.52"
     },
     "config": {
         "optimize-autoloader": true,
@@ -86,7 +87,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "6.0"
+            "require": "^6.4"
         }
     }
 }
